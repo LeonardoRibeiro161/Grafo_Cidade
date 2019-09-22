@@ -1,7 +1,7 @@
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
-#define Vertice int
+#define Vertice char
 #include<string.h>
 #include "grafo.h"
 using namespace std;
@@ -17,6 +17,7 @@ typedef struct noGrafo
 	Vertice v;
 	No *adj;
 	struct noGrafo *prox;
+	float distancia;
 }Lista;
 
 No *cria(Vertice v1, No *p)
@@ -47,12 +48,16 @@ void Inserir(Lista *g)
 	while(g != NULL)
 	{
 		l = NULL;
-		cout<<"Informe o numero de ligações partindo da cidade "<<g->v<<":";
+		cout<<"Informe o numero de ligacoes partindo da cidade "<<g->v<<":";
 		cin>>qte;
+		fflush(stdin);
 		for(i = 0; i < qte;i++)
 		{
 			cout<<"Codigo da cidade de chegada:";
-			scanf("%d", &v);
+			scanf("%c", &v);
+			cout<<"Informe a quilometragem:";
+			cin>>g->distancia;
+			fflush(stdin);
 			l = cria(v,l);
 		}
 		g->adj = l;
@@ -67,7 +72,7 @@ void percorrer(Lista *g)
 		cout<<"Codigo da cidade:"<<g->v<<endl;
 		while(g->adj != NULL)
 		{
-			cout<<"De cidade "<<g->v <<" para "<<g->adj->w<<endl;
+			cout<<"Cidade ("<<g->v<<") --> Cidade("<<g->adj->w<<") Distancia: "<<g->distancia<<"km"<<endl;
 			g->adj = g->adj->prox;
 		}
 		g = g->prox;

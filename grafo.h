@@ -1,4 +1,4 @@
-#define Vertice int
+#define Vertice char
 typedef struct no No;
 
 typedef struct noGrafo Lista;

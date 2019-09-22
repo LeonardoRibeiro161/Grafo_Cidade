@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "grafo.h"
-#define Vertice int
+#define Vertice char
 using namespace std;
 int main() {
 	int qte, i;
@@ -14,8 +14,10 @@ int main() {
 	
 	for(i = 0; i < qte; i++)
 	{
+		fflush(stdin);
 		cout<<"Informe o codigo da cidade:";
-		scanf("%d", &v);
+		scanf("%c", &v);
+		
 		g = criaGrafo(v, NULL, g);
 	}
 	Inserir(g);
